@@ -1,8 +1,8 @@
 
-import { VerificationPortal } from '@/components/VerificationPortal';
+import { MainLanding } from '@/components/MainLanding';
 
 const Index = () => {
-  return <VerificationPortal />;
+  return <MainLanding />;
 };
 
 export default Index;
