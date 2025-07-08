@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { FileText, Clock, MapPin, Wifi } from 'lucide-react';
+import { FileText, Clock, MapPin, Wifi, AlertTriangle } from 'lucide-react';
 
 interface ConsentStepProps {
   data: any;
@@ -40,14 +40,32 @@ export const ConsentStep: React.FC<ConsentStepProps> = ({ data, onNext, onUpdate
 
   return (
     <div className="space-y-6">
+      {/* Legal Warning Header */}
       <div className="text-center">
-        <FileText className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-        <h2 className="text-xl font-semibold text-gray-900 mb-2">
-          Legal Consent & Signature
+        <div className="flex items-center justify-center mb-4">
+          <AlertTriangle className="w-12 h-12 text-red-600 mr-3" />
+          <FileText className="w-12 h-12 text-red-600" />
+        </div>
+        <h2 className="text-xl font-bold text-red-600 mb-2">
+          ⚠️ LEGAL CONSENT & SIGNATURE REQUIRED
         </h2>
-        <p className="text-gray-600">
-          Please review and accept our verification terms
+        <p className="text-red-700 font-semibold">
+          Legal verification required - False claims may result in prosecution
         </p>
+      </div>
+
+      {/* Legal Warning Banner */}
+      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+        <div className="flex items-start space-x-3">
+          <AlertTriangle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
+          <div>
+            <h3 className="font-bold text-red-800 mb-2">LEGAL WARNING</h3>
+            <p className="text-red-700 font-medium text-sm">
+              By proceeding with this verification, you confirm that you are the rightful owner of this claim 
+              and understand that providing false information may result in legal consequences under Dutch law.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Terms Section */}
@@ -154,26 +172,29 @@ export const ConsentStep: React.FC<ConsentStepProps> = ({ data, onNext, onUpdate
         )}
       </div>
 
-      {/* Consent Checkbox */}
-      <div className="flex items-start space-x-3">
-        <Checkbox
-          id="consent"
-          checked={consent}
-          onCheckedChange={(checked) => setConsent(checked as boolean)}
-          className="mt-1"
-        />
-        <label htmlFor="consent" className="text-sm text-gray-700 leading-relaxed">
-          I have read and agree to the verification terms and conditions. I consent to the processing 
-          of my personal data for identity verification and fraud prevention purposes.
-        </label>
+      {/* Consent Checkbox with Legal Warning */}
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+        <div className="flex items-start space-x-3">
+          <Checkbox
+            id="consent"
+            checked={consent}
+            onCheckedChange={(checked) => setConsent(checked as boolean)}
+            className="mt-1"
+          />
+          <label htmlFor="consent" className="text-sm font-bold text-red-800 leading-relaxed">
+            ⚠️ I UNDERSTAND THE LEGAL CONSEQUENCES: I have read and agree to the verification terms and conditions. 
+            I consent to the processing of my personal data for identity verification and fraud prevention purposes. 
+            I confirm this claim is legitimate and understand that false claims may result in prosecution.
+          </label>
+        </div>
       </div>
 
       <Button
         onClick={handleSubmit}
         disabled={!consent || !signature}
-        className="w-full h-12 text-lg bg-blue-600 hover:bg-blue-700"
+        className="w-full h-12 text-lg bg-red-600 hover:bg-red-700 font-bold"
       >
-        Sign & Complete Verification
+        ⚠️ LEGALLY SIGN & COMPLETE VERIFICATION
       </Button>
     </div>
   );
