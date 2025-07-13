@@ -46,16 +46,21 @@ export const VerificationPortal = () => {
     <div className="min-h-screen bg-[#05C4E1] text-white">
       {/* Header */}
       <header className="px-6 py-4" style={{ background: '#05C4E1' }}>
-        <div className="flex items-center space-x-4">
-          <div
-            className="flex items-center space-x-2 cursor-pointer"
-            onClick={() => navigate('/')}
-          >
-            <Shield className="w-8 h-8 text-blue-400" />
-            <h1 className="text-2xl font-bold">GUZCO</h1>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div
+              className="flex items-center space-x-2 cursor-pointer"
+              onClick={() => navigate('/')}
+            >
+              <Shield className="w-8 h-8 text-blue-400" />
+              <h1 className="text-2xl font-bold">GUZCO</h1>
+            </div>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-300 capitalize">Verification</span>
           </div>
-          <span className="text-gray-400">/</span>
-          <span className="text-gray-300 capitalize">Verification</span>
+          <div className="bg-white rounded-lg p-2 flex items-center">
+            <img src="/amac-logo.png" alt="AMAC Logo" className="h-10 w-auto" style={{ objectFit: 'contain' }} />
+          </div>
         </div>
       </header>
 
